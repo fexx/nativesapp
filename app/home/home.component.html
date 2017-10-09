@@ -1,4 +1,23 @@
-<ActionBar title="NativesApp" class="action-bar"></ActionBar>
+<ActionBar class="action-bar">
+    <Label text="NativesApp" class="action-bar-title" android:horizontalAlignment="left"></Label>
 
+    <ng-container *ngIf="platform.isAndroid">
+        <ActionItem text="New group" android.position="popup"></ActionItem>
+        <ActionItem text="New broadcast" android.position="popup"></ActionItem>
+        <ActionItem text="NativesApp Web" android.position="popup"></ActionItem>
+        <ActionItem text="Starred messages" android.position="popup"></ActionItem>
+        <ActionItem text="Settings" android.position="popup"></ActionItem>
+    </ng-container>
+
+    <ng-container *ngIf="platform.isIOS" >
+        <ActionItem text="Edit1" ios.position="left">
+        </ActionItem>
+        <ActionItem text="Edit2" ios.position="right">
+        </ActionItem>
+    </ng-container>
+
+
+</ActionBar>
+    
 <StackLayout>
 </StackLayout>
