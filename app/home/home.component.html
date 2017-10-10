@@ -1,4 +1,4 @@
-<ActionBar class="action-bar link">
+<ActionBar class="action-bar link">   
     <Label text="NativesApp" class="action-bar-title" 
     android:horizontalAlignment="left"
     ios:horizontalAlignment="center"
@@ -6,6 +6,9 @@
     </Label>
 
     <ng-container *ngIf="platform.isAndroid">
+        <ActionItem>
+            <Button [text]="'mdi-search' | fonticon" class="mdi action-bar-button"></Button>
+        </ActionItem>
         <ActionItem text="New group" android.position="popup"></ActionItem>
         <ActionItem text="New broadcast" android.position="popup"></ActionItem>
         <ActionItem text="NativesApp Web" android.position="popup"></ActionItem>
@@ -14,9 +17,9 @@
     </ng-container>
 
     <ng-container *ngIf="platform.isIOS" >
-        <ActionItem text="Edit1" ios.position="left">
+        <ActionItem ios.position="left" ios.systemIcon="2">
         </ActionItem>
-        <ActionItem text="Edit2" ios.position="right">
+        <ActionItem ios.position="right" ios.systemIcon="7">
         </ActionItem>
     </ng-container>
 
