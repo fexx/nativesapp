@@ -1,5 +1,9 @@
-<ActionBar class="action-bar">
-    <Label text="NativesApp" class="action-bar-title" android:horizontalAlignment="left"></Label>
+<ActionBar class="action-bar link">
+    <Label text="NativesApp" class="action-bar-title" 
+    android:horizontalAlignment="left"
+    ios:horizontalAlignment="center"
+    [class.h1]="platform.isOIS">
+    </Label>
 
     <ng-container *ngIf="platform.isAndroid">
         <ActionItem text="New group" android.position="popup"></ActionItem>

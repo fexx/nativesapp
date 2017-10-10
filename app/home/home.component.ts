@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { isAndroid } from 'platform';
 
 @Component({
     moduleId: module.id,
