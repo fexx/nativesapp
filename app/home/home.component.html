@@ -6,9 +6,7 @@
     </Label>
 
     <ng-container *ngIf="platform.isAndroid">
-        <ActionItem>
-            <Button [text]="'mdi-search' | fonticon" class="mdi action-bar-button"></Button>
-        </ActionItem>
+        <ActionItem android.systemIcon="ic_menu_search_mtrl_alpha"></ActionItem>
         <ActionItem text="New group" android.position="popup"></ActionItem>
         <ActionItem text="New broadcast" android.position="popup"></ActionItem>
         <ActionItem text="NativesApp Web" android.position="popup"></ActionItem>
@@ -26,5 +24,4 @@
 
 </ActionBar>
     
-<StackLayout>
-</StackLayout>
+<ns-tabs></ns-tabs>
