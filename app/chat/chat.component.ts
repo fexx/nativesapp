@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RouterExtensions } from 'nativescript-angular/router';
+
+import { ChatsService, Chat} from '../core'
 
 @Component({
   moduleId: module.id,
@@ -10,17 +13,28 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatComponent implements OnInit {
 
   public chatIndex: number;
-  public name: string;
+  public chat: Chat;
+  public unread: number;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private chatsService: ChatsService, 
+    private router: RouterExtensions,
+    @Inject('platform') public platform, 
+  ) {}
 
   ngOnInit(): void {
-    this.router.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.chatIndex = params['index'];
+      this.chat = this.chatsService.chats[this.chatIndex];
     });
-    this.router.queryParams.subscribe(params => {
-      this.name = params['name'];
+    this.route.queryParams.subscribe(params => {
+      this.unread = params['unread'];
     });
+  }
+
+  goBack(){
+    this.router.back();
   }
  
 }
