@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras } from '@angular/router'
 import { RouterExtensions } from 'nativescript-angular/router'
 
-import { ChatsService } from './chats.service';
+import { ChatsService } from '../../core';
 
 @Component({
   moduleId: module.id,
@@ -23,7 +23,8 @@ export class ChatsComponent implements OnInit {
     // chats/0?name=Leena+Munoz
     const extras: NavigationExtras = {
       queryParams: {
-        name: this.chats[args.index].contact.name
+        // name: this.chats[args.index].contact.name
+        unread: 2
       }
     }
     this.routerExtensions.navigate(['chat', args.index], extras);

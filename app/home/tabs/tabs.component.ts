@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import * as application from 'application';
 @Component({
     moduleId: module.id,
     selector: 'ns-tabs',
@@ -8,15 +8,24 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
 
-    public selectedIndex: number;
+  public selectedIndex: number;
 
-  constructor(@Inject('platform') public platform) {}
+  constructor(@Inject('platform') public platform, private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-      if (this.platform.isAndroid) {
-        this.selectedIndex = 1;
-      } else {
-        this.selectedIndex = 3;
-      }
+    this.selectedIndex = this.platform.isAndroid ? 1 : 3;
+
+    if(this.platform.isAndroid){
+      application.android.on(
+        application.AndroidApplication.activityBackPressedEvent, (args: any) =>{
+          if(this.selectedIndex !== 1){
+            this.selectedIndex = 1;
+            args.cancel = true;
+            this.changeDetectorRef.detectChanges();
+          }
+        }
+      );
+    }
+      
   }
 }
