@@ -7,6 +7,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { CoreModule } from "./core";
 import { AppComponent } from "./app.component";
 
+import { registerElement } from "nativescript-angular/element-registry";
+import { Fab } from "nativescript-floatingactionbutton";
+
+registerElement('Fab', () => Fab);
+
 @NgModule({
     bootstrap: [
         AppComponent
